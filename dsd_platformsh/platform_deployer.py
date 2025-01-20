@@ -12,9 +12,9 @@ from django.core.management.utils import get_random_secret_key
 from django.utils.crypto import get_random_string
 from django.utils.safestring import mark_safe
 
-from simple_deploy.management.commands.utils import plugin_utils
-from simple_deploy.management.commands.utils.plugin_utils import sd_config
-from simple_deploy.management.commands.utils.command_errors import (
+from django_simple_deploy.management.commands.utils import plugin_utils
+from django_simple_deploy.management.commands.utils.plugin_utils import sd_config
+from django_simple_deploy.management.commands.utils.command_errors import (
     SimpleDeployCommandError,
 )
 
@@ -228,7 +228,7 @@ class PlatformDeployer:
             msg = platform_msgs.success_msg(sd_config.log_output)
             plugin_utils.write_output(msg)
 
-    # --- Helper methods for methods called from simple_deploy.py ---
+    # --- Helper methods for methods called from deploy.py ---
 
     def _check_plsh_settings(self):
         """Check to see if a Platform.sh settings block already exists."""
