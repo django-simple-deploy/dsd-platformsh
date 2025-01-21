@@ -86,7 +86,7 @@ def test_services_yaml_file(tmp_project):
 
 def test_log_dir(tmp_project):
     """Test that the log directory exists, and contains an appropriate log file."""
-    log_path = Path(tmp_project / "simple_deploy_logs")
+    log_path = Path(tmp_project / "django_simple_deploy_logs")
     assert log_path.exists()
 
     # DEV: After implementing friendly summary for Platform.sh, this file
@@ -119,7 +119,7 @@ def test_log_dir(tmp_project):
     assert "INFO:   Using plugin: dsd_platformsh" in log_file_text
     assert "INFO: Local project name: blog" in log_file_text
     assert "INFO: git status --porcelain" in log_file_text
-    assert "INFO: ?? simple_deploy_logs/" in log_file_text
+    assert "INFO: ?? django_simple_deploy_logs/" in log_file_text
 
     # Spot check for success messages.
     assert (
@@ -129,6 +129,6 @@ def test_log_dir(tmp_project):
     assert "INFO: To deploy your project, you will need to:" in log_file_text
 
     assert (
-        "INFO: - You can find a full record of this configuration in the simple_deploy_logs directory."
+        "INFO: - You can find a full record of this configuration in the django_simple_deploy_logs directory."
         in log_file_text
     )
