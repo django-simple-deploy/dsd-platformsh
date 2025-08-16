@@ -175,6 +175,7 @@ class PlatformDeployer:
         """Set the settings env var, if needed."""
         # This is primarily for Wagtail projects.
         if dsd_config.settings_path.parts[-2:] == ("settings", "production.py"):
+            plugin_utils.write_output("  Setting DJANGO_SETTINGS_MODULE environment variable...")
             dotted_settings_path = ".".join(dsd_config.settings_path.parts[-3:])
             cmd = f"platform variable:create --level environment --name DJANGO_SETTINGS_MODULE --value {dotted_settings_path}"
             output = plugin_utils.run_quick_command(cmd)
