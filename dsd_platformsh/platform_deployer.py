@@ -177,7 +177,8 @@ class PlatformDeployer:
         if dsd_config.settings_path.parts[-2:] == ("settings", "production.py"):
             plugin_utils.write_output("  Setting DJANGO_SETTINGS_MODULE environment variable...")
             dotted_settings_path = ".".join(dsd_config.settings_path.parts[-3:]).removesuffix(".py")
-            cmd = f"platform variable:create --level environment --environment . --name DJANGO_SETTINGS_MODULE --value {dotted_settings_path} --no-interaction"
+            # cmd = f"platform variable:create --level environment --environment . --name DJANGO_SETTINGS_MODULE --value {dotted_settings_path} --no-interaction"
+            cmd = f"platform variable:create --level environment --environment main --name DJANGO_SETTINGS_MODULE --value {dotted_settings_path} --no-interaction --visible-build true --prefix env"
             output = plugin_utils.run_quick_command(cmd)
             plugin_utils.write_output(output)
 
